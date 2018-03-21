@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <tr width="100%" border="1" cellspacing="1" cellpadding="0">
+        <td>id</td>
+        <td>input </td>
+        <td>radio</td>
+        <td>订单</td>
+        <td>username</td>
+        <td>option</td>
+
+    </tr>
+    <tr th:each="user : ${user}">
+        <td th:text="${user.id}"></td>
+
+        <td><input type="text" th:value="${user.id}" /></td>
+        <td>男：<input type="radio" th:checked="${user.id % 2 != 1}"/></td>
+        <td th:switch="${user.id}">
+            <span th:case="3">未支付</span>
+            <span th:case="4">已支付</span>
+            <span th:case="5">订单已完成</span>
+            <span th:case="*">订单默认状态</span>
+        </td>
+        <td><input type="radio" th:if="${user.id % 2 != 0}"/></td>
+        <td th:text="${user.username}"></td>
+        <td>
+            <select>
+                <option>请选择</option>
+                <option th:selected="${user.id % 2 != 0}">北京</option>
+                <option value="2">欢口</option>
+                <option value="2">临汾</option>
+            </select>
+        </td>
+
+        <!--  <td><a th:href="${user.url}" target="_blank">点我</a></td> -->
+    </tr>
+
+</table>
+</body>
+</html>

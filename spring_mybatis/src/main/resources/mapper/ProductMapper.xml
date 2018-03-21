@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dj.spring_mybatis.mapper.ProductMapper">
+
+	<select id="readProduct" resultType="Product">
+		SELECT * FROM product
+	</select>
+	<select id="selProduct" resultType="selProduct">
+		SELECT * FROM product
+	</select>
+
+
+	<insert id="addProduct" parameterType="Product">
+		INSERT INTO product(name) VALUES(#{name})
+	</insert>
+
+	<delete id="delProduct" parameterType="Integer">
+		DELETE FROM product WHERE id = #{id}
+	</delete>
+
+	<update id="updateProduct" parameterType="Product">
+		UPDATE product SET name = #{name} WHERE id = #{id}
+	</update>
+
+</mapper>
